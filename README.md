@@ -41,6 +41,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+rematch examples
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://github.com/rematch/rematch/tree/next/examples/hooks-react-ts
