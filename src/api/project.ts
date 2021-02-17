@@ -1,12 +1,19 @@
 import http from '../helpers/http'
 
+export type Project = {
+  id: string
+  name: string
+  thumbnail: {
+    url: string
+  }
+}
+
 export const listProjects = () => {
   return http.post('graphql', {
     query: `{
       projects {
         name
         thumbnail{
-          id
           url
         }
       }
