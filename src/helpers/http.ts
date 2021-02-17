@@ -7,15 +7,6 @@ const instance = axios.create({
   timeout: 30000,
 });
 
-const AxiosRequestInterceptor = async (config: any) => ({
-  ...config,
-  header: {
-    'Content-Type': 'application/json',
-    // Authorization: `Bearer ${store.getState().auth.token}`,
-    ...config.headers,
-  }
-});
-
 export const handleError = (response: Response & { data: any }) => {
   if (response && response.status === 401) {
     // store.dispatch(logoutAction());
@@ -53,7 +44,12 @@ export const handleError = (response: Response & { data: any }) => {
   }
 };
 
-instance.interceptors.request.use(AxiosRequestInterceptor);
+instance.interceptors.request.use(config => {
+  config.headers['Content-Type'] = 'application/json'
+  config.headers.Authorization = `Bearer ${process.env.REACT_APP_API_TOKEN} `
+
+  return config;
+});
 
 instance.interceptors.response.use(
   (response) => {

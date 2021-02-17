@@ -1,8 +1,10 @@
+import { Models } from '@rematch/core'
+import { project } from './project'
 
-import 
+export interface RootModel extends Models<RootModel> {
+  project: typeof project
+}
 
-
-
-export default {
-  
+export const models: RootModel = {
+  project
 }
