@@ -54,9 +54,10 @@ GraphQL is a `query` language for your API. It gives clients to ask for exactly 
 
 - **Get predictable results**
 
-![image](https://user-images.githubusercontent.com/18430762/108371913-99943600-7241-11eb-9fc2-e30d62b55f98.png)
+<img src="https://user-images.githubusercontent.com/18430762/108371913-99943600-7241-11eb-9fc2-e30d62b55f98.png" width="200">
 
-![image](https://user-images.githubusercontent.com/18430762/108372115-d19b7900-7241-11eb-99d5-31320ebe8880.png)
+<img src="https://user-images.githubusercontent.com/18430762/108372115-d19b7900-7241-11eb-99d5-31320ebe8880.png" width="200">
+
 
 ### Why Not REST
 
