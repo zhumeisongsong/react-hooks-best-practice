@@ -10,7 +10,7 @@ import ProjectCreate from '../components/Project/Create'
 const App: FC = () => {
   const projects = useSelector((state: RootState) => state.project.listData)
   const dispatch = useDispatch<Dispatch>()
-  const fetchData = useCallback(() => dispatch.project.listAsync(), [])
+  const fetchData = useCallback(() => dispatch.project.listAsync(), [dispatch])
 
   useEffect(() => {
     fetchData()
@@ -20,7 +20,7 @@ const App: FC = () => {
     <ProjectCreate />
     <ProjectEdit />
     <ProjectList projects={projects} />
-  </div>, [])
+  </div>, [projects])
 }
 
 export default App

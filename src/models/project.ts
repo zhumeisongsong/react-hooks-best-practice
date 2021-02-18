@@ -1,6 +1,5 @@
 import { createModel } from '@rematch/core'
 import { listProjects } from '../api/project'
-import { RootModel } from '.'
 
 export const project = createModel()({
   state: {
@@ -20,6 +19,8 @@ export const project = createModel()({
   effects: (dispatch) => ({
     async listAsync() {
       const data = await listProjects()
+
+      console.log(data.data.data.projects)
 
       dispatch.project.setListData(data.data.data.projects || [])
     }

@@ -3,7 +3,7 @@ import http from '../helpers/http'
 export type Project = {
   id: string
   name: string
-  thumbnail: {
+  thumbnail?: {
     url: string
   }
 }
@@ -12,6 +12,7 @@ export const listProjects = () => {
   return http.post('graphql', {
     query: `{
       projects {
+        id
         name
         thumbnail{
           url
@@ -21,8 +22,26 @@ export const listProjects = () => {
   })
 }
 
-export const getProject = () => {
-
+export const getProject = (id: string) => {
+  return http.post('graphql', {
+    query: `{
+      project {
+        id
+        name
+        description
+        dateStart
+        dateEnd
+        isOSS
+        thumbnail{
+          url
+        }
+        issue
+        solution
+        result
+        publishedAt
+      }
+    }`
+  })
 }
 
 export const createProject = () => {
