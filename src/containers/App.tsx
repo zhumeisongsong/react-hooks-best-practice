@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useCallback, FC } from 'react'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { Layout } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import { RootState, Dispatch } from '../store'
 import ProjectList from '../components/Project/List'
 import ProjectEdit from '../components/Project/Edit'
@@ -29,17 +29,23 @@ const App: FC = () => {
 
   return useMemo(
     () => (
-      <Content>
-        <ProjectCreate
-          onCreate={createItem}
-          fetchList={fetchList}
-        />
-        {project &&
-          <ProjectEdit
-            data={project}
-            onEdit={updateItem}
-          />
-        }
+      <Content style={{ padding: '50px' }}>
+        <Row>
+          <Col span={11}>
+            <ProjectCreate
+              onCreate={createItem}
+              fetchList={fetchList}
+            />
+          </Col>
+          <Col span={11} offset={2}>
+            {project &&
+              <ProjectEdit
+                data={project}
+                onEdit={updateItem}
+              />
+            }
+          </Col>
+        </Row>
         <ProjectList
           data={projects}
           fetchItem={fetchItem}

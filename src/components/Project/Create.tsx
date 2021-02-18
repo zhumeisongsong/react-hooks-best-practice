@@ -1,6 +1,9 @@
 import React, { useMemo, FC, useCallback } from 'react'
+import { Typography } from 'antd'
 import { Project } from '../../api/project'
 import ProjectForm from './Form'
+
+const { Title } = Typography
 
 const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
   const onFinish = useCallback((values: any) => {
@@ -12,7 +15,10 @@ const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
   }, [])
 
   return useMemo(() =>
-    <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
+    <>
+      <Title level={3}>Create</Title>
+      <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
+    </>
     , [onFinish, onFinishFailed])
 }
 

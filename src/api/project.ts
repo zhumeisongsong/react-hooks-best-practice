@@ -36,9 +36,7 @@ export const listProjects = () => {
       ){
         id
         name
-        thumbnail{
-          url
-        }
+        description
       }
     }`
   })

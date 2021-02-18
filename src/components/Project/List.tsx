@@ -5,6 +5,11 @@ import { Project } from '../../api/project'
 const ProjectList: FC<ProjectListPropsType> = ({ data, fetchItem, onDelete }) => {
   const columns = useMemo(() => [
     {
+      title: 'Id',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',

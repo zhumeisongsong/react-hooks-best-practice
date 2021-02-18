@@ -1,6 +1,9 @@
 import React, { useMemo, FC, useCallback } from 'react'
+import { Typography } from 'antd'
 import { Project } from '../../api/project'
 import ProjectForm from './Form'
+
+const { Title } = Typography
 
 const ProjectEdit: FC<ProjectEditPropsType> = ({ data, onEdit }) => {
   const onFinish = useCallback((values: any) => {
@@ -14,8 +17,11 @@ const ProjectEdit: FC<ProjectEditPropsType> = ({ data, onEdit }) => {
   }, [])
 
   return useMemo(() =>
-    <ProjectForm data={data} onFinish={onFinish} onFinishFailed={onFinishFailed} />,
-    [data, onFinish, onFinishFailed])
+    <>
+      <Title level={3}>Edit</Title>
+      <ProjectForm data={data} onFinish={onFinish} onFinishFailed={onFinishFailed} />
+
+    </>, [data, onFinish, onFinishFailed])
 }
 
 export type ProjectEditPropsType = {
