@@ -1,5 +1,6 @@
 import React, { useMemo, FC } from 'react'
 import { Form, Input, Button } from 'antd'
+import { Project } from '../../api/project'
 
 const layout = {
   labelCol: { span: 8 },
@@ -9,8 +10,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 }
 
-
-const ProjectForm: FC<PropsType> = ({ data, onFinish, onFinishFailed }) => {
+const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed }) => {
   return useMemo(() => <Form
     {...layout}
     name="projectForm"
@@ -42,18 +42,10 @@ const ProjectForm: FC<PropsType> = ({ data, onFinish, onFinishFailed }) => {
   </Form>, [])
 }
 
-const defaultData = {
-  name: null,
-  description: null
-}
-
-ProjectForm.defaultProps = { data: defaultData }
-
-type ProjctFormType = typeof defaultData
-type PropsType = {
-  data?: ProjctFormType
-  onFinish: any
-  onFinishFailed: any
+type ProjectFormPropsType = {
+  data?: Project | null
+  onFinish: (values: any) => void
+  onFinishFailed: (errorInfo: any) => void
 }
 
 export default ProjectForm

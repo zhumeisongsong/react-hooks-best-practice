@@ -25,8 +25,6 @@ export const project = createModel()({
     async listAsync() {
       const response = await listProjects()
 
-      console.log(response)
-
       dispatch.project.setListData(response.data.data.projects)
     },
     async detailAsync({ id }) {
@@ -36,6 +34,7 @@ export const project = createModel()({
     },
     async createAsync({ data }) {
       const response = await createProject({ data })
+
       if (response.data.data.createProject.project.id) {
         await this.listAsync()
       }

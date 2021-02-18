@@ -1,23 +1,28 @@
 import React, { useMemo, FC } from 'react'
+import { Project } from '../../api/project'
 import ProjectForm from './Form'
 
-const ProjectCreate: FC<PropsType> = ({ onCreate, fetchList }) => {
+const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
   const onFinish = (values: any) => {
     onCreate({ data: values })
   }
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo)
   }
 
-  return useMemo(() => <div>
+  return useMemo(() =>
     <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
-  </div>, [])
+    , [])
 }
 
-type PropsType = {
-  onCreate: any
-  fetchList: any
+type ProjectCreatePropsType = {
+  onCreate: ({ data }: { data: Project }) => {
+    type: string
+    payload: {
+      data: Project;
+    }
+  }
+  fetchList: () => Promise<void>
 }
 
 export default ProjectCreate

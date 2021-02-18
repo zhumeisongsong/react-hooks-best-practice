@@ -20,8 +20,6 @@ const stringify = (data: any): string => {
 const queryify = (object: any): string => {
   let string: string = ''
 
-  console.log(object)
-
   string = Object.keys(object)
     .map((key) => {
       return `${key}:"${stringify(object[key])}"`
@@ -34,7 +32,7 @@ export const listProjects = () => {
   return http.post('graphql', {
     query: `{
       projects(
-        sort: "updated_at:desc"
+        sort:"updated_at:desc"
       ){
         id
         name
@@ -49,7 +47,9 @@ export const listProjects = () => {
 export const getProject = ({ id }: { id: string }) => {
   return http.post('graphql', {
     query: `{
-      project {
+      project(
+        id:"${id}"
+      ) {
         id
         name
         description
@@ -62,7 +62,9 @@ export const getProject = ({ id }: { id: string }) => {
         issue
         solution
         result
-        publishedAt
+        published_at
+        updated_at
+        created_at
       }
     }`
   })
@@ -72,8 +74,8 @@ export const createProject = ({ data }: { data: Project }) => {
   return http.post('graphql', {
     query: `mutation{
       createProject(
-        input: {
-          data: ${queryify(data)}
+        input:{
+          data:${queryify(data)}
         }
       ){
         project {
@@ -88,9 +90,11 @@ export const updateProject = ({ id, data }: any) => {
   return http.post('graphql', {
     query: `mutation{
       updateProject(
-        input: {
-          where: ${id}
-          data: ${queryify(data)}
+        input:{
+          where:{
+            id:"${id}"
+          }
+          data:${queryify(data)}
         }
       ){
         project {
@@ -99,14 +103,16 @@ export const updateProject = ({ id, data }: any) => {
       }
     }`
   })
-
 }
 
 export const deleteProject = ({ id }: { id: string }) => {
   return http.post('graphql', {
     query: `mutation{
       deleteProject(
-        input: {where: ${id}}
+        input:{where:{
+          id:"${id}"
+        }
+      }
       ){
         project {
           id
@@ -114,5 +120,4 @@ export const deleteProject = ({ id }: { id: string }) => {
       }
     }`
   })
-
 }
