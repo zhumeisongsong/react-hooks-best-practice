@@ -50,6 +50,8 @@ export const project = createModel()({
       }
     },
     async deleteAsync({ id }) {
+      dispatch.project.setDetailData(null)
+      
       const response = await deleteProject({ id })
 
       if (response.data.data.deleteProject.project.id) {
