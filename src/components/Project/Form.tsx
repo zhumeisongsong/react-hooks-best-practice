@@ -29,7 +29,6 @@ const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed 
     <Form.Item
       label="Description"
       name="description"
-      rules={[{ required: true, message: 'Please input your description!' }]}
     >
       <Input.TextArea />
     </Form.Item>
