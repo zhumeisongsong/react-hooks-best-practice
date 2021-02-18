@@ -1,20 +1,21 @@
-import React, { useMemo, FC } from 'react'
+import React, { useMemo, FC, useCallback } from 'react'
 import { Project } from '../../api/project'
 import ProjectForm from './Form'
 
 const ProjectEdit: FC<ProjectEditPropsType> = ({ data, onEdit }) => {
-  const onFinish = (values: any) => {
+  const onFinish = useCallback((values: any) => {
     if (data && data.id) {
       onEdit({ id: data.id, data: values })
     }
-  }
+  }, [data, onEdit])
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = useCallback((errorInfo: any) => {
     console.log('Failed:', errorInfo)
-  }
+  }, [])
 
   return useMemo(() =>
-    <ProjectForm data={data} onFinish={onFinish} onFinishFailed={onFinishFailed} />, [])
+    <ProjectForm data={data} onFinish={onFinish} onFinishFailed={onFinishFailed} />,
+    [data, onFinish, onFinishFailed])
 }
 
 export type ProjectEditPropsType = {

@@ -34,12 +34,20 @@ const App: FC = () => {
           onCreate={createItem}
           fetchList={fetchList}
         />
-        {project && <ProjectEdit data={project} onEdit={updateItem} />
+        {project &&
+          <ProjectEdit
+            data={project}
+            onEdit={updateItem}
+          />
         }
-        <ProjectList data={projects} fetchItem={fetchItem} onDelete={deleteItem} />
+        <ProjectList
+          data={projects}
+          fetchItem={fetchItem}
+          onDelete={deleteItem}
+        />
       </Content>
     ),
-    [project, projects]
+    [project, projects, createItem, updateItem, deleteItem, fetchItem, fetchList]
   )
 }
 

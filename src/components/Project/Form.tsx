@@ -39,7 +39,7 @@ const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed 
         Submit
     </Button>
     </Form.Item>
-  </Form>, [])
+  </Form>, [data, onFinish, onFinishFailed])
 }
 
 type ProjectFormPropsType = {

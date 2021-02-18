@@ -1,18 +1,22 @@
 import React, { useMemo, FC } from 'react'
-import { Table, Tag, Space, Button } from 'antd';
+import { Table, Space, Button } from 'antd';
 import { Project } from '../../api/project'
 
 const ProjectList: FC<ProjectListPropsType> = ({ data, fetchItem, onDelete }) => {
-  const columns = [
+  const columns = useMemo(() => [
     {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text: string) => <a>{text}</a>,
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
     },
     {
       title: 'Action',
-      key: 'action',
+      key: 'id',
       render: (text: string, record: Project) => (
         <Space size="middle">
           <Button onClick={() => fetchItem({ id: record.id })}>Edit</Button>
@@ -20,13 +24,13 @@ const ProjectList: FC<ProjectListPropsType> = ({ data, fetchItem, onDelete }) =>
         </Space>
       ),
     },
-  ]
+  ], [fetchItem, onDelete])
   // REACT_HOOKS_BEST_PRACTICE: Using useMemo for more fine-grained optimized rendering. 
   // Different from memo, React.memo == PureComponent
   const render = useMemo(() =>
     <div>
-      <Table columns={columns} dataSource={data} />
-    </div>, [data])
+      <Table columns={columns} dataSource={data} rowKey="id" />
+    </div>, [columns, data])
 
   return render
   // Use useMemo to wrap the rendering code.

@@ -28,6 +28,8 @@ export const project = createModel()({
       dispatch.project.setListData(response.data.data.projects)
     },
     async detailAsync({ id }) {
+      dispatch.project.setDetailData(null)
+
       const response = await getProject({ id })
 
       dispatch.project.setDetailData(response.data.data.project)
@@ -43,6 +45,7 @@ export const project = createModel()({
       const response = await updateProject({ id, data })
 
       if (response.data.data.updateProject.project.id) {
+        dispatch.project.setDetailData(null)
         await this.listAsync()
       }
     },

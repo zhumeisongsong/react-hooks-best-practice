@@ -1,18 +1,19 @@
-import React, { useMemo, FC } from 'react'
+import React, { useMemo, FC, useCallback } from 'react'
 import { Project } from '../../api/project'
 import ProjectForm from './Form'
 
 const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
-  const onFinish = (values: any) => {
+  const onFinish = useCallback((values: any) => {
     onCreate({ data: values })
-  }
+  }, [onCreate])
 
-  const onFinishFailed = (errorInfo: any) => {
-  }
+  const onFinishFailed = useCallback((errorInfo: any) => {
+    console.log('Failed:', errorInfo)
+  }, [])
 
   return useMemo(() =>
     <ProjectForm onFinish={onFinish} onFinishFailed={onFinishFailed} />
-    , [])
+    , [onFinish, onFinishFailed])
 }
 
 type ProjectCreatePropsType = {
