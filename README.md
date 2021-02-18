@@ -54,23 +54,26 @@ GraphQL is a `query` language for your API. It gives clients to ask for exactly 
 
 - **Get predictable results**
 
-<img src="https://user-images.githubusercontent.com/18430762/108371913-99943600-7241-11eb-9fc2-e30d62b55f98.png" width="200">
+<img src="https://user-images.githubusercontent.com/18430762/108371913-99943600-7241-11eb-9fc2-e30d62b55f98.png" width="300">
 
-<img src="https://user-images.githubusercontent.com/18430762/108372115-d19b7900-7241-11eb-99d5-31320ebe8880.png" width="200">
-
+<img src="https://user-images.githubusercontent.com/18430762/108372115-d19b7900-7241-11eb-99d5-31320ebe8880.png" width="300">
 
 ### Why Not REST
 
 **Strongly Typed GraphQL**
-Seems typescript, Being strongly-typed makes GraphQL less error prone, can be validated during compile-time and can be used for supportive IDE/editor integrations such as auto-completion and validation.
+
+Seems typescript, Being strongly-typed makes GraphQL less error, can be validated during compile-time and can be used for supportive IDE/editor integrations such as auto-completion and validation.
 
 **Declarative Data Fetching, No Overfetching**
+
 A mobile client usually overfetches data when there is an identical API as the web client with a RESTful API. With GraphQL, the mobile client can choose a different set of fields, so it can fetch only the information needed for what's onscreen.
 
 **Less Requests**
+
 Today, client applications are not made for RESTful server applications. The search result on Airbnb's platform shows homes, experiences, and other related things.
 
 Since REST comes with **a URL for each resource**, it often leads to inefficient waterfall requests.
+
 ```
 Case:
 Want to fetch an home entity identified by an id, and then you fetch all the experiences and other related things by this home using the home's id.
@@ -80,7 +83,6 @@ GET `/homes/${id}`
 GET `/experiences?homeId=${id}`
 Get `/authors?experienceId=${experienceId}`
 ...
-
 
 GraphQL: 
 A single request, which is more efficient
@@ -116,7 +118,7 @@ Example by axois:
   `{name: "name", description: "description}`
   ```
 
-  wrong:
+  Wrong:
   ```
   `{"name": "name", "description": "description}`
   ```
@@ -124,6 +126,7 @@ Example by axois:
 ## Learn More
 
 Why GraphQL: Advantages and Disadvantages:
+
 https://www.robinwieruch.de/why-graphql-advantages-disadvantages-alternatives
 
 Strapi graphQL:
