@@ -6,9 +6,11 @@ https://github.com/dt-fe/weekly/blob/v2/120.%E7%B2%BE%E8%AF%BB%E3%80%8AReact%20H
 
 ## Online Demo
 
+Front:
+
 https://react-hooks-best-practice.herokuapp.com/
 
-API payground:
+API playground:
 
 https://strapi-server-musical-sand.herokuapp.com/graphql
 
@@ -40,8 +42,6 @@ Infrastructure: Heroku
 
 GraphQL is one of the API formats(REST / GraphQL / gRPC /  SOAP).Since 2012 it was been created by Facebook, it's growing in popularity. The latest version of GitHub's API is published using GraphQL. Yelp publishes its API in GraphQL, as does Shopify.
 
-GraphQL API and RESTful API can be used in one project. 
-
 By using a headless CMS -- strapi, here we focus on how to call GraphQL APIs in front end. By default Strapi create REST endpoints for each of your content types. With the GraphQL plugin, you will be able to add a GraphQL endpoint to fetch and mutate your content.
 
 ### What is GraphQL
@@ -59,6 +59,8 @@ GraphQL is a `query` language for your API. It gives clients to ask for exactly 
 <img src="https://user-images.githubusercontent.com/18430762/108372115-d19b7900-7241-11eb-99d5-31320ebe8880.png" width="300">
 
 ### Why Not REST
+
+GraphQL API and RESTful API can be used in one project, you can put them together! Here we just talk about the better points of GraphQL than REST.
 
 **Strongly Typed GraphQL**
 
@@ -108,9 +110,9 @@ How to change to call graphQL API from REESTful API in reactjs project?
 
 You only need to change the functions in API layer.(layout layer for UI / statement layer for data format / API layer for http functions)
 
-Example by axois:
+Example by axois(Other solutions: Apollo Client https://www.apollographql.com/docs/react/):
 - Only use `POST` method
-- Describe queries (get) and mutations (update / create /delete)
+- Describe queries (get) and mutations (update / create / delete)
 - Need to format query string (quotes issue)
   
   Right:
