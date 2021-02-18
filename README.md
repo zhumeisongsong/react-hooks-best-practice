@@ -84,7 +84,6 @@ REST:
 GET `/homes/${id}`
 GET `/experiences?homeId=${id}`
 Get `/authors?experienceId=${experienceId}`
-...
 
 GraphQL: 
 A single request, which is more efficient
