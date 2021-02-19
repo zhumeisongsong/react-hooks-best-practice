@@ -105,23 +105,24 @@ A single request, which is more efficient
 
 ### How
 
-How to change to call graphQL API from REESTful API in reactjs project? 
+How to change to call graphQL API from RESTful API in reactjs project? 
 
 You only need to change the functions in API layer.(layout layer for UI / statement layer for data format / API layer for http functions)
 
 Example by axois(Other solutions: Apollo Client https://www.apollographql.com/docs/react/):
+- Only 1 endpoint
 - Only use `POST` method
 - Describe queries (get) and mutations (update / create / delete)
 - Need to format query string (quotes issue)
   
   Right:
   ```
-  `{name: "name", description: "description}`
+  `{name: "name", description: "description"}`
   ```
 
   Wrong:
   ```
-  `{"name": "name", "description": "description}`
+  `{"name": "name", "description": "description"}`
   ```
 
 ## Learn More
