@@ -33,6 +33,27 @@ const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed 
       <Input.TextArea />
     </Form.Item>
 
+    <Form.Item
+      label="Issue"
+      name="issue"
+    >
+      <Input.TextArea />
+    </Form.Item>
+
+    <Form.Item
+      label="Solution"
+      name="solution"
+    >
+      <Input.TextArea />
+    </Form.Item>
+
+    <Form.Item
+      label="Result"
+      name="result"
+    >
+      <Input.TextArea />
+    </Form.Item>
+
     <Form.Item {...tailLayout}>
       <Button type="primary" htmlType="submit">
         Submit
