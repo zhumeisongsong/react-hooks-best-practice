@@ -5,7 +5,7 @@ import ProjectForm from './Form'
 
 const { Title } = Typography
 
-const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
+const ProjectCreate: FC<ProjectCreateProps> = ({ onCreate }) => {
   const onFinish = useCallback((values: any) => {
     onCreate({ data: values })
   }, [onCreate])
@@ -22,7 +22,7 @@ const ProjectCreate: FC<ProjectCreatePropsType> = ({ onCreate }) => {
     , [onFinish, onFinishFailed])
 }
 
-type ProjectCreatePropsType = {
+type ProjectCreateProps = {
   onCreate: ({ data }: { data: Project }) => {
     type: string
     payload: {

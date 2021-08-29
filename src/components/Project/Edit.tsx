@@ -5,7 +5,7 @@ import ProjectForm from './Form'
 
 const { Title } = Typography
 
-const ProjectEdit: FC<ProjectEditPropsType> = ({ data, onEdit }) => {
+const ProjectEdit: FC<ProjectEditProps> = ({ data, onEdit }) => {
   const onFinish = useCallback((values: any) => {
     if (data && data.id) {
       onEdit({ id: data.id, data: values })
@@ -24,7 +24,7 @@ const ProjectEdit: FC<ProjectEditPropsType> = ({ data, onEdit }) => {
     </>, [data, onFinish, onFinishFailed])
 }
 
-export type ProjectEditPropsType = {
+export type ProjectEditProps = {
   data: Project | null
   onEdit: ({ id, data }: { id: string, data: any }) => {
     type: string

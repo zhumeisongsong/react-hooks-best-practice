@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useCallback, FC } from 'react'
-import './App.css'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useMemo, useCallback, FC } from 'react';
+import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { Layout, Row, Col } from 'antd';
-import { RootState, Dispatch } from '../store'
-import ProjectList from '../components/Project/List'
-import ProjectEdit from '../components/Project/Edit'
-import ProjectCreate from '../components/Project/Create'
+import { RootState, Dispatch } from '../store';
+import ProjectList from '../components/Project/List';
+import ProjectEdit from '../components/Project/Edit';
+import ProjectCreate from '../components/Project/Create';
 
 const { Content } = Layout;
 
@@ -14,36 +14,41 @@ const { Content } = Layout;
 // Constants are recommended to be placed outside the function to avoid performance problems.
 // The function is recommended to use the useCallback declaration
 const App: FC = () => {
-  const dispatch = useDispatch<Dispatch>()
-  const projects = useSelector((state: RootState) => state.project.listData)
-  const project = useSelector((state: RootState) => state.project.detailData)
-  const fetchList = useCallback(() => dispatch.project.listAsync(), [dispatch])
-  const fetchItem = useCallback(({ id }) => dispatch({ type: 'project/detailAsync', payload: { id } }), [dispatch])
-  const createItem = useCallback(({ data }) => dispatch({ type: 'project/createAsync', payload: { data } }), [dispatch])
-  const updateItem = useCallback(({ id, data }) => dispatch({ type: 'project/updateAsync', payload: { id, data } }), [dispatch])
-  const deleteItem = useCallback(({ id }) => dispatch({ type: 'project/deleteAsync', payload: { id } }), [dispatch])
+  const dispatch = useDispatch<Dispatch>();
+  const projects = useSelector((state: RootState) => state.project.listData);
+  const project = useSelector((state: RootState) => state.project.detailData);
+  const fetchList = useCallback(() => dispatch.project.listAsync(), [dispatch]);
+  const fetchItem = useCallback(
+    ({ id }) => dispatch({ type: 'project/detailAsync', payload: { id } }),
+    [dispatch]
+  );
+  const createItem = useCallback(
+    ({ data }) => dispatch({ type: 'project/createAsync', payload: { data } }),
+    [dispatch]
+  );
+  const updateItem = useCallback(
+    ({ id, data }) =>
+      dispatch({ type: 'project/updateAsync', payload: { id, data } }),
+    [dispatch]
+  );
+  const deleteItem = useCallback(
+    ({ id }) => dispatch({ type: 'project/deleteAsync', payload: { id } }),
+    [dispatch]
+  );
 
   useEffect(() => {
-    fetchList()
-  }, [fetchList])
+    fetchList();
+  }, [fetchList]);
 
   return useMemo(
     () => (
       <Content style={{ padding: '50px' }}>
         <Row>
           <Col span={11}>
-            <ProjectCreate
-              onCreate={createItem}
-              fetchList={fetchList}
-            />
+            <ProjectCreate onCreate={createItem} fetchList={fetchList} />
           </Col>
           <Col span={11} offset={2}>
-            {project &&
-              <ProjectEdit
-                data={project}
-                onEdit={updateItem}
-              />
-            }
+            {project && <ProjectEdit data={project} onEdit={updateItem} />}
           </Col>
         </Row>
         <ProjectList
@@ -53,8 +58,16 @@ const App: FC = () => {
         />
       </Content>
     ),
-    [project, projects, createItem, updateItem, deleteItem, fetchItem, fetchList]
-  )
-}
+    [
+      project,
+      projects,
+      createItem,
+      updateItem,
+      deleteItem,
+      fetchItem,
+      fetchList
+    ]
+  );
+};
 
-export default App
+export default App;

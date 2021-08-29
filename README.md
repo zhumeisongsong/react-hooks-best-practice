@@ -21,6 +21,8 @@ git clone https://github.com/zhumeisongsong/react-hooks-best-practice.git
 
 cd react-hooks-best-practice
 
+vi env // Please new a `.env.local` file and add env vars.
+
 npm install
 
 npm start

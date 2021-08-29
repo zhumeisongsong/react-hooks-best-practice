@@ -10,7 +10,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 }
 
-const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed }) => {
+const ProjectForm: FC<ProjectFormProps> = ({ data, onFinish, onFinishFailed }) => {
   return useMemo(() => <Form
     {...layout}
     name="projectForm"
@@ -62,7 +62,7 @@ const ProjectForm: FC<ProjectFormPropsType> = ({ data, onFinish, onFinishFailed 
   </Form>, [data, onFinish, onFinishFailed])
 }
 
-type ProjectFormPropsType = {
+type ProjectFormProps = {
   data?: Project | null
   onFinish: (values: any) => void
   onFinishFailed: (errorInfo: any) => void
