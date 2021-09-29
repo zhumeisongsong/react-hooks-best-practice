@@ -2,7 +2,7 @@
 
 A CRUD demo for practicing react hooks. It follows best practices below.
 
-https://github.com/dt-fe/weekly/blob/v2/120.%E7%B2%BE%E8%AF%BB%E3%80%8AReact%20Hooks%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E3%80%8B.md
+## [Practice with code](https://github.com/zhumeisongsong/react-hooks-best-practice/issues/1)
 
 ## Online Demo
 
@@ -42,13 +42,13 @@ Infrastructure: Heroku
 
 ## GraphQL
 
-GraphQL is one of the API formats(REST / GraphQL / gRPC /  SOAP).Since 2012 it was been created by Facebook, it's growing in popularity. The latest version of GitHub's API is published using GraphQL. Yelp publishes its API in GraphQL, as does Shopify.
+GraphQL is one of the API formats(REST / GraphQL / gRPC / SOAP).Since 2012 it was been created by Facebook, it's growing in popularity. The latest version of GitHub's API is published using GraphQL. Yelp publishes its API in GraphQL, as does Shopify.
 
 By using a headless CMS -- strapi, here we focus on how to call GraphQL APIs in front end. By default Strapi create REST endpoints for each of your content types. With the GraphQL plugin, you will be able to add a GraphQL endpoint to fetch and mutate your content.
 
 ### What is GraphQL
 
-GraphQL is a `query` language for your API. It gives clients to ask for exactly `what you need` and nothing more. 
+GraphQL is a `query` language for your API. It gives clients to ask for exactly `what you need` and nothing more.
 
 - **Describe your data**
 
@@ -87,7 +87,7 @@ GET `/homes/${id}`
 GET `/experiences?homeId=${id}`
 Get `/authors?experienceId=${experienceId}`
 
-GraphQL: 
+GraphQL:
 A single request, which is more efficient
     `home(
         id:"${id}"
@@ -97,32 +97,35 @@ A single request, which is more efficient
         experiences {
           id
           title
-          content 
+          content
           author {
             name
           }
         }
       }`
-``` 
+```
 
 ### How
 
-How to change to call graphQL API from RESTful API in reactjs project? 
+How to change to call graphQL API from RESTful API in reactjs project?
 
 You only need to change the functions in API layer.(layout layer for UI / statement layer for data format / API layer for http functions)
 
 Example by axois(Other solutions: Apollo Client https://www.apollographql.com/docs/react/):
+
 - Only 1 endpoint
 - Only use `POST` method
 - Describe queries (get) and mutations (update / create / delete)
 - Need to format query string (quotes issue)
-  
+
   Right:
+
   ```
   `{name: "name", description: "description"}`
   ```
 
   Wrong:
+
   ```
   `{"name": "name", "description": "description"}`
   ```
@@ -144,5 +147,3 @@ https://github.com/rematch/rematch/tree/next/examples/hooks-react-ts
 API format:
 
 https://www.redhat.com/architect/apis-soap-rest-graphql-grpc
-
-
