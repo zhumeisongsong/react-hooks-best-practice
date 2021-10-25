@@ -6,7 +6,6 @@ import { RootState, Dispatch } from '../store';
 import ProjectList from '../components/Project/List';
 import ProjectEdit from '../components/Project/Edit';
 import ProjectCreate from '../components/Project/Create';
-// import TableWithSearch from '../components/TableWithSearch';
 
 const { Content } = Layout;
 
@@ -53,7 +52,6 @@ const App: FC = () => {
           fetchItem={fetchItem}
           onDelete={deleteItem}
         />
-        {/* <TableWithSearch /> */}
       </Content>
     ),
     [
